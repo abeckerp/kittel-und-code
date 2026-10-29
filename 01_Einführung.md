@@ -89,7 +89,7 @@ Folgende Erweiterungen sind hilfreich und empfehle ich zu installieren:
 Um eine virtuelle Umgebung in dem Projektordner `Kittel-und-Code` zu erstellen, wird dort der Befehl `python -m venv .kuc-env` ausgeführt. In diesem Fall ist `.kuc-env` der Name für die virtuelle Umgebung, dieser kann aber frei gewählt werden (z.B. einfach `.venv`). *(Bei Ordnern oder Dateien mit einem führenden `.` handelt es sich um versteckte Dateien.)*
 
 **Aktivieren**
-Die virtuelle Umgebung muss zu Beginn einer jeden Session gestartet werden, da ansonsten installierte Packages nicht geladen werden. Unter Windows wird die virtuelle Umgebung über `.kuc-env\Scripts\activate` gestartet, unter MacOS oder Unix mit `source .kuc/bin/activate`. 
+Die virtuelle Umgebung muss zu Beginn einer jeden Session gestartet werden, da ansonsten installierte Packages nicht geladen werden. Unter Windows wird die virtuelle Umgebung über `.kuc-env\Scripts\activate` gestartet, unter MacOS oder Unix mit `source .kuc-env/bin/activate`. 
 
 **Installieren**
 Nun können beliebige Pakete installiert werden (`pip install <package>`), die für wissenschaftliche Datenauswertungen benötigt werden. Die bekanntesten und am meisten verbreiteten Pakete sind pandas, numpy, scikit learn, matplotlib und seaborn. Die beiden letzten werden zur Visualisierung genutzt. 
