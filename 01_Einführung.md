@@ -36,6 +36,7 @@ Sollte eine Installation fehlen, wird sie je nach Distribution unterschiedlich i
 
 
 >**Ziel 1: erfüllt**
+>
 ## Installation von VS Code
 >Visual Studio Code ist ein kostenloser Code-Editor von Microsoft, der für Windows, MacOS und Linux verfügbar ist. Wir verwenden ihn, um Jupyter Notebooks auszuführen, in denen die Datenanalysen geschrieben sind.
 
@@ -55,7 +56,6 @@ Bitte der Anleitung für die jeweilige Distribution folgen.
 ![alt text](<.images/Pasted image 20261027101945.png>)
 
 
-
 Über die Auswahl des **Explorers** oben links wird nun ein Ordner ausgewählt (ggf. erstellt), in dem die Übungen und Projekte der Vorlesungsreihe gespeichert werden sollen (*Empfehlung: Benutzerverzeichnis, dort den Ordner "Kittel-und-Code" erstellen*). 
 Dazu wählt man **Open Folder**:
 ![alt text](<.images/Pasted image 20261027102310.png>)
@@ -63,6 +63,7 @@ Dazu wählt man **Open Folder**:
 Im Anschluss wird ein Terminal geöffnet:
 ![alt text](<.images/Pasted image 20261027102652.png>)
 
+<mark>Update: Windows User nutzen bitte das `Command Prompt` Terminal, MacOS User nutzen bitte das `bash` Terminal.
 
 Im Terminal wird die Installation von Python überprüft: `python3 --version`
 Die Anzeige sollte ähnlich sein: `Python 3.14.4`. 
@@ -79,17 +80,20 @@ Folgende Erweiterungen sind hilfreich und empfehle ich zu installieren:
 - Python
 - Rainbow CSV
 - Todo Tree
+  
 ## Virtuelle Umgebung erstellen
 > Virtuelle Umgebungen sind in sich abgeschlossene Bereiche, in denen unterschiedliche Pakete installiert werden können, ohne mit anderen Umgebungen oder dem Betriebssystem in Konflikt zu geraten.
 > ![alt text](<.images/Pasted image 20261027104234.png>)
 >*Source: Claude*
 
 **Erstellen**
-	*Unter Umständen muss das Paket venv noch installiert werden (`pip install venv`)*
-Um eine virtuelle Umgebung in dem Projektordner `Kittel-und-Code` zu erstellen, wird dort der Befehl `python -m venv .kuc-env` ausgeführt. In diesem Fall ist `.kuc-env` der Name für die virtuelle Umgebung, dieser kann aber frei gewählt werden (z.B. einfach `.venv`). *(Bei Ordnern oder Dateien mit einem führenden `.` handelt es sich um versteckte Dateien.)*
+Um eine virtuelle Umgebung in dem Projektordner `Kittel-und-Code` zu erstellen, wird dort der Befehl `python3 -m venv .kuc-env` ausgeführt. In diesem Fall ist `.kuc-env` der Name für die virtuelle Umgebung, dieser kann aber frei gewählt werden (z.B. einfach `.venv`). *(Bei Ordnern oder Dateien mit einem führenden `.` handelt es sich um versteckte Dateien.)*
+*Unter Umständen muss das Paket venv noch installiert werden (`pip install venv`). Falls das Erstellen der venv nicht klappt, installiert bitte das Paket venv nach und versucht es erneut.*
 
 **Aktivieren**
-Die virtuelle Umgebung muss zu Beginn einer jeden Session gestartet werden, da ansonsten installierte Packages nicht geladen werden. Unter Windows wird die virtuelle Umgebung über `.kuc-env\Scripts\activate` gestartet, unter MacOS oder Unix mit `source .kuc-env/bin/activate`. 
+Die virtuelle Umgebung muss zu Beginn einer jeden Session gestartet werden, da ansonsten installierte Packages nicht geladen werden. Unter Windows wird die virtuelle Umgebung über `.kuc-env\Scripts\activate` oder `.kuc-env\Scripts\Activate.ps1` gestartet, unter MacOS oder Unix mit `source .kuc-env/bin/activate`. 
+
+<mark>Update: Sobald mittels `python3 -m venv .kuc-env` die virtuelle Umgebung erstellt und aktiviert wurde, kann innerhalb der venv mit `pip` anstelle von `python3 -m pip` gearbeitet werden.
 
 **Installieren**
 Nun können beliebige Pakete installiert werden (`pip install <package>`), die für wissenschaftliche Datenauswertungen benötigt werden. Die bekanntesten und am meisten verbreiteten Pakete sind pandas, numpy, scikit learn, matplotlib und seaborn. Die beiden letzten werden zur Visualisierung genutzt. 
