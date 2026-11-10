@@ -14,7 +14,7 @@
 
 ## Part I: Die heutige Grundlage 
 
-## Hypoxie
+### Hypoxie
 **Potenzial der Vorhersage von Hypoxie mittels ML:**
 - individuelle Vorhersage innerhalb einer bestimmten Zeit
 - Möglichkeit vor akuter Zustandsverschlechterung zu warnen (Intensivstation)
@@ -26,7 +26,7 @@
 - Parameter: Patientencharakteristika, vorherige $SpO_2$ Werte
 - ML-Modelle: konventionelle Modelle (Regression, k-nearest neighbors), neuronale Netze
 
-## Das SWIFT Modell
+### Das SWIFT Modell
 *$SpO_2$ Waveform ICU Forecasting Technique*
 [Annapragada et al. (2021) SWIFT: A deep learning approach to prediction of hypoxemic events in critically-Ill patients using SpO2 waveform prediction. PLoS Comput Biol 17(12)](https://doi.org/10.1371/journal.pcbi.1009712)
 -> 30-45 min
@@ -42,13 +42,13 @@ Fragen:
 
 > Ziel 1 erfüllt.
 
-# Part II: öffentliche Datensets
+## Part II: öffentliche Datensets
 
 Fragen: 
 - Welche Herausforderungen gibt es, um Datensätze öffentlich verfügbar zu machen?
 - Welche öffentlichen Datenbanken mit Gesundheitsdaten kennt ihr?
 
-## MIMIC-IV Datenbank
+### MIMIC-IV Datenbank
 - [Medical Information Mart for Intensive Care (MIMIC)-IV](https://physionet.org/content/mimiciv/3.1/), a large deidentified dataset of patients admitted to the emergency department or an intensive care unit at the Beth Israel Deaconess Medical Center in Boston, MA
 - MIMIC-IV contains data for over **65,000** patients admitted to an **ICU** and over **200,000** patients admitted to the **emergency** **department** (2008 - 2022).
 
@@ -62,18 +62,18 @@ Only credentialed users who sign the [DUA](https://physionet.org/content/mimiciv
 **Database Demo**: 
 [https://physionet.org/content/mimic-iv-demo/2.2/](https://physionet.org/content/mimic-iv-demo/2.2/ "https://physionet.org/content/mimic-iv-demo/2.2/")
 
-## Weitere öffentliche Datensätze mit Patientendaten
+### Weitere öffentliche Datensätze mit Patientendaten
 - UC Berkeley Library führt eine große Übersicht zu [Health Statistics & Data: Datasets/Raw Data](https://guides.lib.berkeley.edu/publichealth/healthstatistics/rawdata)
 - Übersicht aus Medium: [18 Open Healthcare Datasets — 2025 Update](https://odsc.medium.com/18-open-healthcare-datasets-2025-update-935cbfe0a497)
 
 > Ziel 2 erfüllt.
 
-# Part III: Python Packages 
+## Part III: Python Packages 
 
-- [numpy](https://numpy.org/)
-- [pandas](https://pandas.pydata.org/)
-- [matplotlib](https://matplotlib.org/)*
-- [scikit-learn](http://scikit-learn.org/)
+- [numpy](https://numpy.org/): [Übungsnotebook]()
+- [pandas](https://pandas.pydata.org/): [Übungsnotebook](https://github.com/abeckerp/kittel-und-code/blob/02_analysepipeline/02_Pandas_Tutorial.ipynb)
+- [matplotlib](https://matplotlib.org/)*: [Übungsnotebook]()
+- [scikit-learn](http://scikit-learn.org/): [Übungsnotebook]()
 \**Matplotlib wurde bereits in dem Beispielnotebook aus der letzten Session verwendet.*
 
 Installtation mit:
@@ -94,23 +94,26 @@ pip install numpy pandas matplotlib scikit-learn
 
 > Ziel 3 erfüllt.
 
-# Part IV: Hands-on
+## Part IV: Hands-on
 
 Dies ist der größte Part. Er umfasst neben des heutigen Termins (11.11.) auch die Online-Übung.
 
-![[Pasted image 20261109134108.png]]
+![alt text](<.images/Pasted image 20261109134108.png>)
 
-## 1. Fragestellung
+### 1. Fragestellung
 Wie lautet die Fragestellung, dir wir mit den MIMIC-IV Daten beantworten wollen?
-## 2. Daten
+
+### 2. Daten
 Was ist unser Patientenkollektiv/welche Daten verwenden wir?
-## 3. Aufbereitung
+
+### 3. Aufbereitung
 Oft auch Preprocessing genannt.
--> Notebook [Datenaufbereitung](LINK HIER)
+-> Notebook [Datenaufbereitung](https://github.com/abeckerp/kittel-und-code/blob/02_analysepipeline/05_Datenaufbereitung_SpO2_Uebung.ipynb)
 
 > Ziel 4 erfüllt.
-## 4. Modell
+
+### 4. Modell
 Übung bis zum 18.11.2026
--> Notebook [Modellentwicklung]()
+-> Notebook [Modellentwicklung](https://github.com/abeckerp/kittel-und-code/blob/02_analysepipeline/06_Modellentwicklung_SpO2_Uebung.ipynb)
 
 > Ziel 5 erfüllt.
