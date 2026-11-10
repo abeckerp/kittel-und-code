@@ -29,7 +29,7 @@
 ### Das SWIFT Modell
 *$SpO_2$ Waveform ICU Forecasting Technique*
 [Annapragada et al. (2021) SWIFT: A deep learning approach to prediction of hypoxemic events in critically-Ill patients using SpO2 waveform prediction. PLoS Comput Biol 17(12)](https://doi.org/10.1371/journal.pcbi.1009712)
--> 30-45 min
+-> 30-40 min
 
 Fragen:
 1. Was ist das grundsätzliche Ziel des Modells
@@ -70,26 +70,26 @@ Only credentialed users who sign the [DUA](https://physionet.org/content/mimiciv
 
 ## Part III: Python Packages 
 
-- [numpy](https://numpy.org/): [Übungsnotebook]()
-- [pandas](https://pandas.pydata.org/): [Übungsnotebook](https://github.com/abeckerp/kittel-und-code/blob/02_analysepipeline/02_Pandas_Tutorial.ipynb)
-- [matplotlib](https://matplotlib.org/)*: [Übungsnotebook]()
-- [scikit-learn](http://scikit-learn.org/): [Übungsnotebook]()
+- [numpy](https://numpy.org/): [Übungsnotebook](02-1_NumPy_Tutorial.ipynb)
+- [pandas](https://pandas.pydata.org/): [Übungsnotebook](02-2_Pandas_Tutorial.ipynb)
+- [matplotlib](https://matplotlib.org/)*: [Übungsnotebook](02-3_Matplotlib_Tutorial.ipynb)
+- [scikit-learn](http://scikit-learn.org/): [Übungsnotebook](02-4_scikit-learn_Tutorial.ipynb)
 \**Matplotlib wurde bereits in dem Beispielnotebook aus der letzten Session verwendet.*
 
 Installtation mit:
 ```
-# aktiviere die virtuelle Umgebung
+    # aktiviere die virtuelle Umgebung
 
-# MacOS
-source <venv>/bin/activate
+    # MacOS
+    source <venv>/bin/activate
 
-# Windows
-<venv>\Scripts\activate 
-# oder 
-<venv>\Scripts\Activate.ps1
+    # Windows
+    <venv>\Scripts\activate 
+    # oder 
+    <venv>\Scripts\Activate.ps1
 
-# Installation
-pip install numpy pandas matplotlib scikit-learn
+    # Installation
+    pip install numpy pandas matplotlib scikit-learn
 ```
 
 > Ziel 3 erfüllt.
@@ -108,12 +108,12 @@ Was ist unser Patientenkollektiv/welche Daten verwenden wir?
 
 ### 3. Aufbereitung
 Oft auch Preprocessing genannt.
--> Notebook [Datenaufbereitung](https://github.com/abeckerp/kittel-und-code/blob/02_analysepipeline/05_Datenaufbereitung_SpO2_Uebung.ipynb)
+-> Notebook [Datenaufbereitung](02-5_Datenaufbereitung_SpO2_Uebung.ipynb)
 
 > Ziel 4 erfüllt.
 
 ### 4. Modell
 Übung bis zum 18.11.2026
--> Notebook [Modellentwicklung](https://github.com/abeckerp/kittel-und-code/blob/02_analysepipeline/06_Modellentwicklung_SpO2_Uebung.ipynb)
+-> Notebook [Modellentwicklung](02-6_Modellentwicklung_SpO2_Uebung.ipynb)
 
 > Ziel 5 erfüllt.
