@@ -28,8 +28,10 @@
 
 ### Das SWIFT Modell
 _$SpO_2$ Waveform ICU Forecasting Technique_
+
 [Annapragada et al. (2021) SWIFT: A deep learning approach to prediction of hypoxemic events in critically-Ill patients using SpO2 waveform prediction. PLoS Comput Biol 17(12)](https://doi.org/10.1371/journal.pcbi.1009712)
-=> 30-40 min
+
+-> 30-40 min
 
 Fragen:
 1. Was ist das grundsätzliche Ziel des Modells
@@ -74,6 +76,7 @@ Only credentialed users who sign the [DUA](https://physionet.org/content/mimiciv
 - [pandas](https://pandas.pydata.org/): [Übungsnotebook](02-2_Pandas_Tutorial.ipynb)
 - [matplotlib](https://matplotlib.org/)*: [Übungsnotebook](02-3_Matplotlib_Tutorial.ipynb)
 - [scikit-learn](http://scikit-learn.org/): [Übungsnotebook](02-4_scikit-learn_Tutorial.ipynb)
+
 \**Matplotlib wurde bereits in dem Beispielnotebook aus der letzten Session verwendet.*
 
 Installtation mit:
@@ -108,12 +111,14 @@ Was ist unser Patientenkollektiv/welche Daten verwenden wir?
 
 ### 3. Aufbereitung
 Oft auch Preprocessing genannt.
+
 -> Notebook [Datenaufbereitung](02-5_Datenaufbereitung_SpO2_Uebung.ipynb)
 
 > Ziel 4 erfüllt.
 
 ### 4. Modell
 Übung bis zum 18.11.2026
+
 -> Notebook [Modellentwicklung](02-6_Modellentwicklung_SpO2_Uebung.ipynb)
 
 > Ziel 5 erfüllt.
