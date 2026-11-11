@@ -27,9 +27,9 @@
 - ML-Modelle: konventionelle Modelle (Regression, k-nearest neighbors), neuronale Netze
 
 ### Das SWIFT Modell
-*$SpO_2$ Waveform ICU Forecasting Technique*
+_$SpO_2$ Waveform ICU Forecasting Technique_
 [Annapragada et al. (2021) SWIFT: A deep learning approach to prediction of hypoxemic events in critically-Ill patients using SpO2 waveform prediction. PLoS Comput Biol 17(12)](https://doi.org/10.1371/journal.pcbi.1009712)
--> 30-40 min
+=> 30-40 min
 
 Fragen:
 1. Was ist das grundsätzliche Ziel des Modells
