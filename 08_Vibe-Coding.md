@@ -11,21 +11,9 @@
 
 ---
 
-## Zeitplan im Überblick
-
-| Zeit | Dauer | Block | Inhalt |
-|---|---|---|---|
-| 0:00 – 0:10 | 10 min | 0 | Setup: API-Schlüssel, OpenCode-Test |
-| 0:10 – 0:20 | 10 min | 1 | Einführung: Was ist Vibe Coding, wie arbeitet ein Agent? |
-| 0:20 – 0:45 | 25 min | 2 | Datensatz erkunden (Prompt 1) |
-| 0:45 – 0:50 | 5 min | – | Pause |
-| 0:50 – 1:15 | 25 min | 3 | Modell bauen (Prompt 2) |
-| 1:15 – 1:35 | 20 min | 4 | Web-App bauen (Prompt 3) |
-| 1:35 – 1:45 | 10 min | 5 | Reflexion, Grenzen, Fragen |
-
----
-
 ## Part 1: Setup
+
+Check for bashrc, context7 and firecrawl
 
 ### 1. Projektordner anlegen
 
@@ -120,8 +108,6 @@ Sag in einem Satz, welches Modell du bist, und erstelle eine Datei hello.txt mit
 | Neue Sitzung | `/new` |
 | Beenden | `/exit` oder `Ctrl+C` |
 
-**Tipp:** Den *Plan*-Modus vor großen Aufgaben nutzen: „Erst planen, dann bauen“ – der Agent schlägt einen Ablauf vor, man prüft ihn, dann `Tab` und ausführen lassen.
-
 ---
 
 ## Part 3: Den Datensatz kennenlernen
@@ -213,11 +199,6 @@ Which column has the strongest association with disease? Explain it to me as you
 Erkläre mir auf Deutsch, warum Patienten mit asymptomatischem Brustschmerz (cp=4) in diesem Datensatz häufiger erkrankt sind.
 ```
 
-**Lehrmoment (2 min Plenum):** `cp = 4` (asymptomatisch) ist hier der stärkste Risikofaktor beim Brustschmerz – auf den ersten Blick paradox. Erklärung: Wer *ohne* Symptome trotzdem zur Angiographie überwiesen wird, hatte andere starke Gründe (z. B. auffälliges Belastungs-EKG). **Das Modell lernt die Überweisungslogik dieser Klinik, nicht die Biologie.** Frage an die Gruppe: Hat der Agent das von sich aus erkannt?
-
----
-
-
 ---
 
 ## Part 4: Ein Vorhersagemodell bauen
@@ -244,12 +225,9 @@ Nur so viel, wie man braucht, um den Agenten sinnvoll zu steuern:
 **Checkpoint-Prompt:**
 
 ```
-Now let's build a model to predict heart disease. Treat it as binary —
-target 0 means no disease, anything above 0 means disease present.
+Now let's build a model to predict heart disease. Treat it as binary — target 0 means no disease, anything above 0 means disease present.
 
-Handle the missing values, compare a couple of models with cross-validation,
-and save the best one. Show me feature importance so I know what's driving
-predictions.
+Handle the missing values, compare a couple of models with cross-validation, and save the best one. Show me feature importance so I know what's driving predictions.
 ```
 
 ### 3. Was das LLM mit diesem Prompt macht
@@ -283,11 +261,6 @@ How well calibrated is the model? If it says 70% risk, are about 70% of those pa
 ```
 Wir wollen keine Kranken übersehen. Wähle einen Schwellenwert mit Sensitivität ≥ 90 % und zeige, was das für die Spezifität bedeutet.
 ```
-
-**Lehrmoment (2 min Plenum):**
-- 303 Patient:innen sind *sehr wenig*. Die Ergebnisse schwanken stark zwischen den Folds.
-- Kein externer Testdatensatz → wir wissen nicht, ob das Modell in einer anderen Klinik funktioniert. (Der UCI-Datensatz enthält übrigens auch Daten aus Ungarn, der Schweiz und Long Beach – eine ideale externe Validierung als Hausaufgabe.)
-- Feature Importance ≠ Kausalität: `ca` ist wichtig, weil es eng mit dem Ergebnis der Angiographie zusammenhängt – nicht, weil man daran therapeutisch drehen könnte.
 
 ---
 
@@ -345,7 +318,7 @@ Erwartung: A niedriges, B hohes Risiko.
 
 **Aufgabe 2 – Unsinnige Eingaben:** Gib ein Alter von 250 oder einen Blutdruck von 0 ein. Was passiert?
 
-**Folgeprompts zur Verbesserung (eine auswählen):**
+**Folgeprompts zur Verbesserung (einen auswählen):**
 
 ```
 Add input validation with physiologically plausible ranges, and show a clear error message in German if a value is out of range.
@@ -371,7 +344,7 @@ Show the prediction as a risk category (low / intermediate / high) with the cut-
 
 1. **Wie viel Code hast du geschrieben?** Wie viel davon hast du gelesen? Wie sicher bist du, dass er korrekt ist?
 2. **Wo hat der Agent Fehler gemacht oder etwas Fragwürdiges behauptet?**
-3. **Würden Sie diese App bei einem echten Patienten einsetzen?** Warum nicht?
+3. **Würdest du diese App bei einem echten Patienten einsetzen?** Warum nicht?
 
 ### Kernbotschaften zum Mitnehmen
 

@@ -31,37 +31,37 @@
 
 ### 1. Projektordner anlegen
 
+Es wird ein neuer Projektordner angelegt. Dieser ist unabhängig von der bisherigen `.env` und der Analyse. Da die Windows-User nun mit WSL (Ubuntu) arbeiten, muss der neue Ordner im Terminal angelegt werden:
 ```bash
 mkdir heart-project
 cd heart-project
 ```
+Unix-User können ihn auch über den Filebrowser anlegen.
 
 **Sagen:** „Der Agent arbeitet immer in dem Ordner, in dem Sie ihn starten. Alles, was er erzeugt – Skripte, Plots, Modelle – landet hier. Starten Sie OpenCode deshalb nie in Ihrem Home-Verzeichnis.“
 
-### 0.2 API-Schlüssel in die `auth.json` eintragen (4 min)
+### 2 API-Schlüssel in die `auth.json` eintragen (4 min)
 
-Die Datei liegt unter:
-
-- **macOS / Linux:** `~/.local/share/opencode/auth.json`
-- **Windows:** `%USERPROFILE%\.local\share\opencode\auth.json`
-
-Falls Ordner oder Datei noch nicht existieren:
-
-```bash
-mkdir -p ~/.local/share/opencode
-nano ~/.local/share/opencode/auth.json
+Datei öffnen (`vi`) und über `i` in den Editier-Modus wechseln;
+```
+cd ~/.local/share/opencode
+vi auth.json
 ```
 
-Inhalt (Provider-ID an Ihren Anbieter anpassen, z. B. `anthropic`, `openai`):
-
-```json
+Der Inhalt sollte wie folgt sein:
+```
 {
-  "PROVIDER_ID": {
+  "llmchat-idm": {
     "type": "api",
-    "key": "HIER-IHR-SCHLÜSSEL"
+    "key": "<PLACEHOLDER>"
   }
 }
 ```
+Der Placeholder wird nun ersetzt. Über `Esc` und `:wq` + Enter schreiben und schließen.
+
+**Häufige Fehler:**
+- Fehlende Anführungszeichen oder Komma → ungültiges JSON
+- Leerzeichen am Anfang/Ende des Schlüssels
 
 **Alternative ohne Dateibearbeitung:** OpenCode starten und `/connect` eingeben – der Schlüssel wird dann automatisch in dieselbe Datei geschrieben.
 
@@ -72,9 +72,10 @@ Inhalt (Provider-ID an Ihren Anbieter anpassen, z. B. `anthropic`, `openai`):
 - Leerzeichen am Anfang/Ende des Schlüssels
 - Falsche Provider-ID (muss zum Anbieter passen)
 
-### 0.3 Funktionstest (5 min)
+### 3 Funktionstest (5 min)
 
-```bash
+Nun wird OpenCode einmal getestet:
+```
 opencode
 ```
 
@@ -93,9 +94,11 @@ Sag in einem Satz, welches Modell du bist, und erstelle eine Datei hello.txt mit
 
 **Voraussetzung prüfen:** Python sollte installiert sein (`python3 --version`). Falls nicht, kann der Agent später Hilfe geben – aber für die Zeitplanung ist es besser, das vorab zu klären.
 
+> Ziel 1 erfüllt.
+
 ---
 
-## Block 1 – Einführung: Was ist Vibe Coding? (0:10 – 0:20, 10 min)
+## Part 2: Einführung: Was ist Vibe Coding? (0:10 – 0:20, 10 min)
 
 ### Kernbotschaften
 
@@ -119,7 +122,7 @@ Sag in einem Satz, welches Modell du bist, und erstelle eine Datei hello.txt mit
 
 **Vergleich aus der Klinik:** Der Agent ist wie ein sehr schneller, sehr belesener Assistenzarzt im ersten Jahr. Er arbeitet fleißig und selbstständig, klingt immer überzeugt – aber Sie unterschreiben den Befund. Sie müssen stichprobenartig prüfen.
 
-### Drei Regeln für heute
+### Drei Regeln für das Arbeiten mit LLMs
 
 1. **Kontext schlägt Kürze.** Je genauer Sie beschreiben, *was* und *wozu*, desto besser das Ergebnis.
 2. **Vertrauen ist gut, Prüfen ist Pflicht.** Mindestens eine Zahl pro Ergebnis selbst nachprüfen.
@@ -131,16 +134,15 @@ Sag in einem Satz, welches Modell du bist, und erstelle eine Datei hello.txt mit
 |---|---|
 | Modell wählen | `/models` |
 | Zwischen *Plan*- und *Build*-Modus wechseln | `Tab` (Plan = nur denken/planen, nichts ändern) |
+| Dokumentation | `/init` | 
 | Neue Sitzung | `/new` |
 | Beenden | `/exit` oder `Ctrl+C` |
 
-**Tipp:** Den *Plan*-Modus vor großen Aufgaben nutzen: „Erst planen, dann bauen“ – der Agent schlägt einen Ablauf vor, Sie prüfen ihn, dann `Tab` und ausführen lassen.
-
 ---
 
-## Block 2 – Den Datensatz kennenlernen (0:20 – 0:45, 25 min)
+## Part 3 – Den Datensatz kennenlernen (0:20 – 0:45, 25 min)
 
-### 2.1 Medizinischer Hintergrund (5 min, Lehrperson)
+### 1. Medizinischer Hintergrund (5 min, Lehrperson)
 
 - **Quelle:** Cleveland Clinic Foundation, 1988 (Janosi, Steinbrunn, Pfisterer, Detrano)
 - **Population:** 303 Patient:innen, die zur **Koronarangiographie** überwiesen wurden
@@ -166,7 +168,7 @@ Sag in einem Satz, welches Modell du bist, und erstelle eine Datei hello.txt mit
 
 **Diskussionsimpuls:** „Was ist das für eine Population? Sind das Menschen aus der Allgemeinbevölkerung?“ → Nein, es sind bereits *überwiesene* Patient:innen mit Verdacht. Ein Modell darauf gilt nicht für ein Screening der Allgemeinbevölkerung (**Selection Bias / Spectrum Bias**).
 
-### 2.2 Eigener Prompt (10 min, Studierende)
+### 2. Eigener Prompt (10 min, Studierende)
 
 **Aufgabe:** Formulieren Sie selbst einen Prompt, mit dem der Agent den Datensatz herunterlädt und Ihnen einen Überblick verschafft. Überlegen Sie: Was möchten Sie als Mediziner:in über diesen Datensatz wissen, bevor Sie ihm vertrauen?
 
@@ -183,12 +185,10 @@ https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processe
 
 The study page is here: https://archive.ics.uci.edu/dataset/45
 
-Can you download it, figure out what the columns mean, and give me a sense
-of what's in the data? Missing values, feature distributions, correlations,
-and how the target breaks down. Save any useful plots.
+Can you download it, figure out what the columns mean, and give me a sense of what's in the data? Missing values, feature distributions, correlations, and how the target breaks down. Save any useful plots.
 ```
 
-### 2.3 Was das LLM mit diesem Prompt macht (Erklärung während der Agent arbeitet)
+### 3. Was das LLM mit diesem Prompt macht (Erklärung während der Agent arbeitet)
 
 Lassen Sie die Studierenden die Ausgabe im Terminal mitlesen und kommentieren Sie live:
 
@@ -200,7 +200,7 @@ Lassen Sie die Studierenden die Ausgabe im Terminal mitlesen und kommentieren Si
 6. **Plots speichern:** Histogramme, Korrelations-Heatmap, Verteilung der Zielgröße als PNG.
 7. **Zusammenfassen:** Eine Beschreibung in Prosa – die *Interpretation* stammt vom Sprachmodell und ist nicht automatisch korrekt.
 
-### 2.4 Selbst prüfen (8 min, Studierende)
+### 4. Selbst prüfen (8 min, Studierende)
 
 **Aufgabe:** Prüfen Sie drei Aussagen des Agenten selbst. Öffnen Sie dazu die Rohdatei oder die erzeugten Plots.
 
@@ -238,9 +238,9 @@ Agent kann weiterlaufen – wer hinterherhängt, nutzt den Checkpoint-Prompt.
 
 ---
 
-## Block 3 – Ein Vorhersagemodell bauen (0:50 – 1:15, 25 min)
+## Part 4 – Ein Vorhersagemodell bauen (0:50 – 1:15, 25 min)
 
-### 3.1 Minimale Methodik (5 min, Lehrperson)
+### 1. Minimale Methodik (5 min, Lehrperson)
 
 Nur so viel, wie man braucht, um den Agenten sinnvoll zu steuern:
 
@@ -253,7 +253,7 @@ Nur so viel, wie man braucht, um den Agenten sinnvoll zu steuern:
   - **AUC** – Fläche unter der ROC-Kurve, 0,5 = Münzwurf, 1,0 = perfekt
 - **Feature Importance:** Welche Variablen beeinflussen die Vorhersage am stärksten. **Nicht kausal!**
 
-### 3.2 Eigener Prompt (10 min, Studierende)
+### 2. Eigener Prompt (10 min, Studierende)
 
 **Aufgabe:** Schreiben Sie einen Prompt für ein Vorhersagemodell. Überlegen Sie bewusst:
 - Was ist für eine Diagnostik-Anwendung schlimmer – ein übersehener Kranker oder ein falscher Alarm? Welche Kennzahl wollen Sie also sehen?
@@ -270,7 +270,7 @@ and save the best one. Show me feature importance so I know what's driving
 predictions.
 ```
 
-### 3.3 Was das LLM mit diesem Prompt macht
+### 3. Was das LLM mit diesem Prompt macht
 
 1. **Kontext nutzen:** Der Agent erinnert sich an die Sitzung – er weiß, wo die Daten liegen und wie die Spalten heißen. (Deshalb in derselben Sitzung bleiben!)
 2. **Zielvariable binarisieren:** `target = (num > 0).astype(int)`.
@@ -282,7 +282,7 @@ predictions.
 
 **Typische Ergebnisse (zum Abgleich):** ROC-AUC etwa 0,88–0,92, Accuracy etwa 0,80–0,85. Wichtigste Variablen meist `thal`, `ca`, `cp`, `oldpeak`, `thalach`, `exang`. Auf diesem kleinen Datensatz schlägt die logistische Regression oft die komplexen Modelle.
 
-### 3.4 Kritisch nachfragen (8 min, Studierende)
+### 4. Kritisch nachfragen (8 min, Studierende)
 
 Mindestens zwei dieser Folgeprompts ausprobieren:
 
@@ -309,15 +309,15 @@ Wir wollen keine Kranken übersehen. Wähle einen Schwellenwert mit Sensitivitä
 
 ---
 
-## Block 4 – Eine Web-App bauen (1:15 – 1:35, 20 min)
+## Part 5 – Eine Web-App bauen (1:15 – 1:35, 20 min)
 
-### 4.1 Einführung (2 min, Lehrperson)
+### 1. Einführung (2 min, Lehrperson)
 
 - **Flask** ist ein kleines Python-Framework, mit dem man eine Webseite lokal auf dem eigenen Rechner bereitstellen kann.
 - Die App lädt das gespeicherte Modell, nimmt Eingaben über ein Formular entgegen und gibt eine Wahrscheinlichkeit zurück.
 - Sie läuft nur lokal (`http://127.0.0.1:5000`), nicht im Internet.
 
-### 4.2 Prompt ausführen (8 min, Studierende)
+### 2. Prompt ausführen (8 min, Studierende)
 
 Hier dürfen die Studierenden direkt mit dem Checkpoint-Prompt starten oder ihn anpassen (z. B. deutsche Oberfläche).
 
@@ -330,7 +330,7 @@ prediction. Make it look professional, add a disclaimer that it's not for
 clinical use.
 ```
 
-### 4.3 Was das LLM mit diesem Prompt macht
+### 3. Was das LLM mit diesem Prompt macht
 
 1. **Flask installieren** (`pip install flask`).
 2. **Projektstruktur anlegen:** typischerweise `app.py`, `templates/index.html`, ggf. `static/style.css`.
@@ -344,7 +344,7 @@ clinical use.
 
 App im Browser öffnen: `http://127.0.0.1:5000`
 
-### 4.4 Testen und verbessern (10 min, Studierende)
+### 4. Testen und verbessern (10 min, Studierende)
 
 **Aufgabe 1 – Plausibilitätstest:** Geben Sie zwei Fallvignetten ein und prüfen Sie, ob das Ergebnis klinisch plausibel ist:
 
@@ -366,7 +366,7 @@ Erwartung: A niedriges, B hohes Risiko.
 
 **Aufgabe 2 – Unsinnige Eingaben:** Geben Sie ein Alter von 250 oder einen Blutdruck von 0 ein. Was passiert?
 
-**Folgeprompts zur Verbesserung (eine auswählen):**
+**Folgeprompts zur Verbesserung (einen auswählen):**
 
 ```
 Add input validation with physiologically plausible ranges, and show a clear error message in German if a value is out of range.
@@ -386,7 +386,7 @@ Show the prediction as a risk category (low / intermediate / high) with the cut-
 
 ---
 
-## Block 5 – Reflexion und Abschluss (1:35 – 1:45, 10 min)
+## Part 6 – Reflexion und Abschluss (1:35 – 1:45, 10 min)
 
 ### Leitfragen für die Diskussion
 
@@ -400,6 +400,8 @@ Show the prediction as a risk category (low / intermediate / high) with the cut-
 - **Ein Prototyp ist kein Medizinprodukt.** Software, die eine Diagnose- oder Therapieentscheidung unterstützt, fällt in der EU unter die **Medizinprodukteverordnung (MDR)** und ist in der Regel zulassungspflichtig; KI-Systeme in diesem Bereich gelten zudem nach dem **EU AI Act** als Hochrisiko-Systeme.
 - **Datenschutz:** Wir haben öffentliche, anonymisierte Daten verwendet. Echte Patientendaten dürfen nicht ohne Weiteres an ein externes LLM geschickt werden (DSGVO, Schweigepflicht).
 - **Die eigentliche ärztliche Kompetenz** liegt im Fragen, Prüfen und Einordnen: Population, Bias, Kennzahlen, klinische Plausibilität. Genau das kann der Agent Ihnen nicht abnehmen.
+
+![alt text](.images/risks_vibecoding.png)
 
 ### Wofür Vibe Coding im Studium und in der Forschung sinnvoll ist
 
